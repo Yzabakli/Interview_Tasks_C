@@ -1,46 +1,34 @@
 //
-// Created by Abakli on 08/08/2022.
+// Created by Abakli on 19/08/2022.
 //
 
-
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
 #include <stdio.h>
-int power(int x, unsigned int y)
-{
-    if (y == 0)
-        return 1;
-    if (y % 2 == 0)
-        return power(x, y / 2) * power(x, y / 2);
-    return x * power(x, y / 2) * power(x, y / 2);
-}
 
-int order(int x)
-{
-    int n = 0;
-    while (x) {
-        n++;
-        x = x / 10;
-    }
-    return n;
-}
+static int isArmstrong(int number){
 
-int isArmstrong(int x)
-{
-    int n = order(x);
-    int temp = x, sum = 0;
-    while (temp) {
-        int r = temp % 10;
-        sum += power(r, n);
-        temp = temp / 10;
+    char numberToString[(int) (floor(log10(abs(number))) + 1)];
+
+    itoa(number, numberToString, 10);
+
+    int power = (int) strlen(numberToString);
+
+    int sum = 0;
+
+    for (int i = 0; i < power; ++i) {
+
+        sum += pow((int) numberToString[i] - 48, (int) power);
     }
 
-    if (sum == x)
+    if (sum == number){
         return 1;
-    else
-        return 0;
+    } else return 0;
 }
+/*
+int main(){
 
-int main()
-{
     int x = 153;
     if (isArmstrong(x) == 1)
         printf("True\n");
@@ -54,4 +42,4 @@ int main()
         printf("False\n");
 
     return 0;
-}
+}*/
