@@ -7,8 +7,7 @@
 
 static int fibonacci(int number){
 
-    int j = 0;
-    int z = 1;
+    int j = 0, z = 1;
 
     for (int i = 1; i < number; ++i){
 
@@ -18,8 +17,8 @@ static int fibonacci(int number){
     }
     return z;
 }
-
+/*
 int main(){
 
     printf("%d", fibonacci(10));
-}
+}*/
